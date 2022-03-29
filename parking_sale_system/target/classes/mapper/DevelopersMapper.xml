@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DevelopersMapper">
+    <insert id="insertDevelopers" parameterType="com.bean.Developers">
+        insert into developer values (#{developerId},#{developerName},#{state},#{money})
+    </insert>
+    <select id="selectMoney" resultType="Double">
+        select money from developer where `developer_id` = #{did}
+    </select>
+    <update id="updateDevelopersState">
+        update developer set state=#{state} where developer_id=#{id};
+    </update>
+    <select id="selectDevelopers" parameterType="java.util.Map" resultType="com.bean.Developers">
+        select *from developer LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+    <delete id="deleteDevelopers">
+        delete from developer where developer_id=#{id}
+    </delete>
+
+    <select id="selectState" resultType="String">
+        select `state` from developer where developer_id=#{id}
+    </select>
+
+    <select id="selectDeveloper" resultType="com.bean.Developers">
+        select * from developer where `developer_id` = #{developerId}
+    </select>
+    <update id="updateMoney">
+        update developer set money=#{money} where developer_id=#{did};
+    </update>
+</mapper>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.AdministratorsMapper">
+
+    <select id="selectAdministratorsByName" resultType="com.bean.Administrators">
+        select * from administrators where administrators_name = #{administratorsName}
+    </select>
+    <update id="updateAdministratorsMoney">
+        update administrators set money=#{money} where administrators_name = #{administratorsName}
+    </update>
+    <insert id="insertAdministrators" parameterType="com.bean.Administrators">
+        insert into administrators(administrators_id,administrators_name,administrators_password,money) values (#{administratorsId},#{administratorsName},#{administratorsPassword},#{money})
+    </insert>
+
+</mapper>

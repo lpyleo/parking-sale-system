@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.CouponMapper">
+    <insert id="insertCoupon" parameterType="com.bean.Coupon">
+        insert into `coupon` values (#{id},#{userId},#{couponContent})
+    </insert>
+    <update id="updateCoupon">
+        update `coupon` set state=#{state} where developer_id=#{id};
+    </update>
+    <select id="selectCoupon" parameterType="java.util.Map" resultType="com.bean.Coupon">
+        select * from `coupon` where user_id = #{userId}
+    </select>
+</mapper>

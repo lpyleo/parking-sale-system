@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ActivityMapper">
+    <select id="selectActivity" parameterType="java.util.Map" resultType="com.bean.Activity">
+        select * from `activity`
+        <where>
+            activity_developer_id=#{did}
+            <if test="search != null and search !=''">
+                and `activity_name` like concat('%', #{search}, '%')
+                or `activity_id` = #{search}
+            </if>
+        </where>
+        LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+
+    <insert id="addActivity" parameterType="com.bean.Activity">
+        insert into activity values (#{activityId},#{activityName},#{activityDeveloperId},#{activityContent},#{activityCategory},#{activityDiscount},#{activityResidentialQuartersId})
+    </insert>
+
+    <delete id="deleteActivity" parameterType="java.util.Map">
+        delete from activity where activity_id = #{activity_id}
+    </delete>
+
+    <select id="selectAllActivity" resultType="com.bean.Activity">
+        select `activity`.* from `activity`,`parking_space` where `parking_space`.id=#{parkingSpaceId} and `parking_space`.`residential_quarters_id` = `activity`.`activity_residential_quarters_id`
+    </select>
+
+</mapper>

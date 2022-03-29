@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ExamineApproveMapper">
+    <insert id="insertExamineApprove" parameterType="com.bean.ExamineApprove">
+        insert into examine_and_approve values (#{id},#{developerId},#{file},#{state},#{adId},#{developerName})
+    </insert>
+    <select id="selectExamineApprove" parameterType="java.util.Map" resultType="com.bean.ExamineApprove">
+        select *from examine_and_approve where state=#{state}
+            LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+    <select id="selectHisExamineApprove" parameterType="java.util.Map" resultType="com.bean.ExamineApprove">
+        select *from examine_and_approve where ad_id=#{adminId} and (state=#{state1} or state=#{state2})
+            LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+    <update id="updateExamineApproveState">
+        update examine_and_approve set state=#{state},ad_id=#{adminId} where id=#{eId}
+    </update>
+    <select id="selectExamineApproveById" resultType="com.bean.ExamineApprove">
+        select *from examine_and_approve where id=#{eId}
+    </select>
+</mapper>

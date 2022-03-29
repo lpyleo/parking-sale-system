@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ParkingSpaceMapper">
+    <select id="selectParkingSpaceById" resultType="com.bean.ParkingSpace">
+        select * from parking_space where id = #{id}
+    </select>
+    <insert id="insertParkSpace" parameterType="com.bean.ParkingSpace">
+        insert into parking_space values (#{id} ,#{residentialQuartersId},#{photo},#{address},#{price},#{preferentialMeasures},#{state},#{buyersId},#{views})
+    </insert>
+
+    <update id="updateParkSpaceState">
+        update parking_space set state=#{state} where id=#{id}
+    </update>
+    <select id="countParkSpace" resultType="Integer">
+        select count(`parking_space`.`id`) from `parking_space`,`residential_quarters` where `parking_space`.residential_quarters_id = `residential_quarters`.id and
+            `residential_quarters`.developer_id=#{did} and `parking_space`.state = 1
+    </select>
+    <select id="selectParkSpace" parameterType="java.util.Map" resultType="com.bean.ParkingSpace">
+        select `parking_space`.* from `parking_space`,`residential_quarters`
+        <where>
+            `parking_space`.residential_quarters_id = `residential_quarters`.id and
+            `residential_quarters`.developer_id=#{did}
+            <if test="search != null and search !=''">
+                and `parking_space`.`residential_quarters_id` = #{search}
+                or `parking_space`.`state` = #{search}
+                or `parking_space`.`id` = #{search}
+            </if>
+        </where>
+        LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+    <select id="selectAllParkSpace" parameterType="java.util.Map" resultType="com.bean.ParkingSpace">
+        select `parking_space`.* from `parking_space`,`residential_quarters`
+        <where>
+            `parking_space`.residential_quarters_id = `residential_quarters`.id
+        </where>
+        LIMIT ${(pageNum-1)*pageSize},${pageSize*pageNum};
+    </select>
+    <select id="selectAllSpace" parameterType="java.util.Map" resultType="com.bean.ParkingSpace">
+        select `parking_space`.* from `parking_space`,`residential_quarters`
+        <where>
+            `parking_space`.residential_quarters_id = `residential_quarters`.id
+        </where>
+    </select>
+</mapper>

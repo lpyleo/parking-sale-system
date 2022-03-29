@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.ResidentialQuartersMapper">
+    <insert id="insertResidentialQuarters" parameterType="com.bean.ResidentialQuarters">
+        insert into residential_quarters values (#{id},#{developerId},#{residentialQuartersName},#{state})
+    </insert>
+
+    <select id="selectResidentialQuarters" parameterType="java.util.Map" resultType="com.bean.ResidentialQuarters">
+        select * from residential_quarters
+        <where>
+            developer_id = #{did}
+        </where>
+    </select>
+
+    <update id="updateResidentialQuarters" parameterType="java.util.Map">
+        update residential_quarters set `state`=#{state} where `id` = #{did}
+    </update>
+
+    <select id="selectResidentialQuartersById" parameterType="java.util.Map" resultType="com.bean.ResidentialQuarters">
+        select * from residential_quarters
+        <where>
+            id = #{did}
+        </where>
+    </select>
+</mapper>

@@ -1,0 +1,152 @@
+* {
+    font-family: 'montserrat', sans-serif;
+}
+body {
+    margin: 0;
+    padding: 0;
+    background: #333;
+}
+.login-box {
+    position: absolute;
+    top: 0;
+    left: 0%;
+    width: 100%;
+    height: 100vh; /* vh 视口高度 viewport height 百分比单位*/
+    background-image: linear-gradient(
+            45deg,
+            #9fbaa8,
+            #31354c
+    ); /*设置颜色渐变 方向(0deg垂直向上) 起点颜色 终点颜色*/
+    transition: 0.4s; /*过度效果  property duration timing-function delay 默认属性:all 0 ease 0*/
+}
+.login-form {
+    position: absolute;
+    top: 40%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*定义 2D 转换8 */
+    color: white;
+    text-align: center;
+}
+.login-form h1 {
+    font-weight: 400;
+    margin-top: 0;
+}
+.txtb {
+    display: block;
+    box-sizing: border-box;
+    width: 240px;
+    text-align: center;
+    background: #ffffff28;
+    border: 1px solid white;
+    padding: 10px 20px;
+    color: white;
+    outline: none;
+    margin: 10px auto;
+    border-radius: 6px;
+    transition: 0.25s;
+}
+.txtb:focus {
+    width: 300px;
+    border-color: #2ecc71;
+}
+.login-btn {
+    width: 240px;
+    background: #2c3e50;
+    border: 0;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.login-btn:hover {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+.hide-login-btn {
+    color: #000;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 30px;
+    opacity: 0.7;
+    transform: rotate(45deg); /*定义 2D 转换8 */
+}
+.show-login-btn {
+    position: absolute;
+    top: 33%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border: 2px solid;
+    padding: 10px;
+    cursor: pointer;
+}
+
+
+
+.show-register-btn {
+    position: absolute;
+    top: 66%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    border: 2px solid;
+    padding: 10px;
+    cursor: pointer;
+}
+.hide-register-btn {
+    color: #000;
+    position: absolute;
+    top: 40px;
+    right: 40px;
+    cursor: pointer;
+    font-size: 30px;
+    opacity: 0.7;
+    transform: rotate(45deg); /*定义 2D 转换8 */
+}
+.register-btn {
+    width: 240px;
+    background: #2c3e50;
+    border: 0;
+    color: white;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: 0.4s;
+}
+.register-btn:hover {
+    background: #2ecc71;
+    border-color: #2ecc71;
+}
+.register-box {
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100vh; /* vh 视口高度 viewport height 百分比单位*/
+    background-image: linear-gradient(
+            45deg,
+            #9fbaa8,
+            #31354c
+    ); /*设置颜色渐变 方向(0deg垂直向上) 起点颜色 终点颜色*/
+    transition: 0.4s; /*过度效果  property duration timing-function delay 默认属性:all 0 ease 0*/
+}
+.register-form {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /*定义 2D 转换8 */
+    color: white;
+    text-align: center;
+}
+.register-form h1 {
+    font-weight: 400;
+    margin-top: 0;
+}
+
+
+.showed {
+    left: 0;
+}

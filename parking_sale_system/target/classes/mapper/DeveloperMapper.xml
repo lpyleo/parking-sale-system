@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.dao.DeveloperMapper">
+    <select id="login" resultType="com.bean.Developer_administrator" parameterType="java.util.Map">
+        select * from developer_administrator where id = #{developerId} and password = #{password}
+    </select>
+    <insert id="insertDeveloper_administrator" parameterType="com.bean.Developer_administrator">
+        insert into developer_administrator values (#{id},#{developerId},#{role},#{password})
+    </insert>
+    <select id="select_roleInfo" resultType="com.bean.Developer_administrator">
+        select * from developer_administrator where id =#{uid}
+    </select>
+    <update id="modify_password">
+        update developer_administrator set password=#{password} where id=#{uid};
+    </update>
+</mapper>
